@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.polarbookshop'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+
+
+repositories {
+// 配置国内的 Maven 仓库
+maven {
+    url 'https://maven.aliyun.com/repository/public' // 阿里云公共仓库
+}
+maven {
+    url 'https://maven.aliyun.com/repository/google' // 阿里云Google仓库
+}
+maven {
+    url 'https://maven.aliyun.com/repository/gradle-plugin' // 阿里云Gradle插件仓库
+}
+ 
+// 如果使用的是Gradle的新版本，可以使用以下配置
+maven {
+    url 'https://maven.aliyun.com/repository/public-snapshot' // 阿里云公共快照仓库
+}
+maven {
+    url 'https://maven.aliyun.com/repository/central' // 阿里云中央仓库
+}
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

@@ -1,0 +1,33 @@
+GET http://localhost:9001/books
+
+###
+
+POST http://localhost:9001/books
+Content-Type: application/json
+
+{
+    "author":"Lyra Silverstar",
+    "title":"Northern Lights",
+     "isbn":"1234567891", 
+     "price":9.90
+}
+
+###
+
+
+#错误请求
+POST http://localhost:9001/books
+Content-Type: application/json
+
+{
+    "author":"李剑仁",
+    "title":"",
+     "isbn":"123ABC456Z", 
+     "price":9.90
+}
+###
+
+GET http://localhost:9001/books/1234567891
+
+###
+
